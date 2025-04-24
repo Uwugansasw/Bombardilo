@@ -14,59 +14,78 @@
     <link rel="stylesheet" href="../header.css" />
     <link rel="stylesheet" href="cart.css" />
     <link rel="stylesheet" href="../dist/tailwind.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7"
+      crossorigin="anonymous"
+    />
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="cart.js" defer></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq"
+      crossorigin="anonymous"
+    ></script>
   </head>
   <body>
-    <header
-      class="bg-gray-800 text-white py-4 px-4 fixed w-full z-50 top-0 flex justify-between items-center"
-    >
-      <h1 class="text-xl md:text-2xl">FS</h1>
-      <div
-        class="hamburger md:hidden text-2xl cursor-pointer select-none ml-auto"
-        role="button"
-        aria-label="Toggle menu"
-      >
-        ☰
+    <nav class="navbar navbar-expand-md bg-dark navbar-dark fixed-top py-2">
+      <div class="container-fluid">
+        <a class="navbar-brand text-lg" href="#">FS</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto gap-3">
+            <li class="nav-item">
+              <a
+                class="nav-link text-gray-200 hover:text-blue-500"
+                href="../index.html#home"
+                >Home</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link text-gray-200 hover:text-blue-500"
+                href="../index.html#produk"
+                >Produk</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link text-gray-200 hover:text-blue-500"
+                href="../index.html#kontak"
+                >Kontak</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/cart/cart.html">
+                <div class="d-flex align-items-center">
+                  <i class="fas fa-cart-shopping text-white"></i>
+                  <span
+                    class="cart-count bg-blue-500 text-white rounded-full text-xs px-2 py-1 ms-2"
+                    >0</span
+                  >
+                </div>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="/loginpage/login.html" class="nav-link btn-login">
+                <i class="fa-solid fa-right-to-bracket"></i>
+              </a>
+            </li>
+          </ul>
+        </div>
       </div>
-      <nav class="md:flex items-center">
-        <ul class="items-center space-x-6 md:space-x-6">
-          <li>
-            <a
-              href="../index.html/#home"
-              class="text-gray-200 hover:text-blue-500"
-              >Home</a
-            >
-          </li>
-          <li>
-            <a
-              href="../index.html/#produk"
-              class="text-gray-200 hover:text-blue-500"
-              >Produk</a
-            >
-          </li>
-          <li>
-            <a
-              href="../index.html/#kontak"
-              class="text-gray-200 hover:text-blue-500"
-              >Kontak</a
-            >
-          </li>
-          <div class="cart-icon flex items-center space-x-2 cursor-pointer">
-            <a href="./cart/cart.html">
-              <i class="fas fa-cart-shopping text-white text-lg"></i>
-            </a>
-            <span
-              class="cart-count bg-blue-500 text-white rounded-full text-xs px-2 py-1"
-              >0</span
-            >
-          </div>
-          <a href="./loginpage/login.html" class="btn-login px-4 py-2">
-            <i class="fa-solid fa-right-to-bracket"></i>
-          </a>
-        </ul>
-      </nav>
-    </header>
+    </nav>
 
     <div class="container">
       <h1 class="cart-title">Keranjang Belanja</h1>

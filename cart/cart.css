@@ -129,6 +129,25 @@ nav ul {
 }
 
 /* Daftar menu navigasi */
+
+.navbar-nav .nav-item {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-nav .nav-link {
+  display: flex;
+  align-items: center;
+}
+
+.cart-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 20px;
+  min-width: 20px;
+}
+
 .nav-menu ul {
   display: flex;
   flex-direction: column;
@@ -182,15 +201,6 @@ nav ul {
   cursor: pointer;
 }
 
-/* Jumlah item di keranjang */
-.cart-count {
-  background-color: #3b82f6;
-  color: white;
-  border-radius: 9999px;
-  font-size: 0.75rem;
-  padding: 0.25rem 0.5rem;
-}
-
 /* Tombol login */
 .btn-login {
   padding: 0.5rem 1rem;
@@ -199,6 +209,16 @@ nav ul {
   color: white;
   cursor: pointer;
   display: inline-block;
+}
+
+@media (max-width: 767px) {
+  .navbar-nav {
+    align-items: center;
+  }
+
+  .navbar-nav .nav-item {
+    margin: 5px 0;
+  }
 }
 
 /* Styling untuk layar lebih besar dari 768px (desktop) */

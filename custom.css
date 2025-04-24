@@ -22,6 +22,16 @@
   width: 100%;
 }
 
+/* Login Button */
+.btn-login {
+  padding: 0.5rem 1rem;
+  background-color: transparent;
+  border: none;
+  color: white;
+  cursor: pointer;
+  display: inline-block;
+}
+
 /* Word Rotation Animation */
 .word-rotate {
   position: relative;
@@ -150,6 +160,25 @@
 }
 
 /* Hover effect for nav links */
+
+.navbar-nav .nav-item {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-nav .nav-link {
+  display: flex;
+  align-items: center;
+}
+
+.cart-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 20px;
+  min-width: 20px;
+}
+
 nav ul li a {
   position: relative;
 }
@@ -255,6 +284,13 @@ nav ul {
   .hamburger {
     margin-left: auto;
     padding-right: 0;
+  }
+  .navbar-nav {
+    align-items: center;
+  }
+
+  .navbar-nav .nav-item {
+    margin: 5px 0;
   }
 }
 

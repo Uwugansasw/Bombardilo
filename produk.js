@@ -13,8 +13,8 @@ export const products = [
   },
   {
     name: "Baju Trendy",
-    price: "Rp 175.000",
-    image: "/Gambar/baju_baru.jpg",
+    price: "Rp 700.000",
+    image: "/Gambar/baju trendy.jpg",
     alt: "Baju 3",
   },
   {
