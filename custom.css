@@ -1,3 +1,27 @@
+/* Efek hover untuk tombol Lihat Produk dengan Tailwind */
+.btn-hover-effect {
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.btn-hover-effect::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background-color: #4b5563; /* Warna abu-abu yang lebih terang dari bg-gray-800 */
+  z-index: -1;
+  transition: width 0.3s ease;
+  transform-origin: left;
+}
+
+.btn-hover-effect:hover::before {
+  width: 100%;
+}
+
 /* Word Rotation Animation */
 .word-rotate {
   position: relative;
