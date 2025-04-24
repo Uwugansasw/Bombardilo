@@ -1,0 +1,280 @@
+/* Word Rotation Animation */
+.word-rotate {
+  position: relative;
+  height: 2.5em;
+  overflow: hidden;
+  vertical-align: bottom;
+}
+
+.word {
+  display: block;
+  position: relative;
+  width: 100%;
+  text-align: center;
+  font-size: 1.6rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  line-height: 2.5em;
+  animation: slideUp 6s infinite ease-in-out;
+}
+
+.word:nth-child(1) {
+  animation-delay: -2s;
+  color: #333;
+}
+.word:nth-child(2) {
+  animation-delay: 0s;
+  color: #333;
+}
+.word:nth-child(3) {
+  animation-delay: -4s;
+  color: #333;
+}
+
+@keyframes slideUp {
+  0%,
+  30% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  32% {
+    transform: translateY(-20%);
+    opacity: 0.9;
+  }
+  34% {
+    transform: translateY(-40%);
+    opacity: 0.6;
+  }
+  36.66%,
+  63.33% {
+    transform: translateY(-100%);
+    opacity: 1;
+  }
+  66.66% {
+    transform: translateY(-133.33%);
+    opacity: 1;
+  }
+  69.99%,
+  100% {
+    transform: translateY(-200%);
+    opacity: 1;
+  }
+}
+
+/* Product Slide Animation */
+.produk-item {
+  opacity: 0;
+  transition: opacity 0.3s ease, transform 0.3s ease; /* Tambah transform buat zoom */
+  border: 1px solid #e5e7eb; /* Border box, Tailwind gray-200 */
+  border-radius: 0.5rem; /* Ujung membulat */
+  padding: 1rem; /* Jarak dalam */
+  background-color: #fff; /* Latar putih */
+  width: 100%;
+  max-width: 300px; /* Ukuran wajar desktop */
+  margin: 0.5rem; /* Jarak antar produk */
+  transform-origin: center; /* Zoom dari tengah */
+}
+
+.produk-item img {
+  width: 100%;
+  height: 200px; /* Tinggi gambar tetap */
+  object-fit: cover; /* Gambar proporsional */
+  border-radius: 0.25rem; /* Sudut gambar membulat */
+}
+
+.produk-item:hover {
+  transform: scale(2.08);
+  z-index: 10;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  transition: all 0.25s ease;
+}
+
+.produk-item:hover img {
+  transform: scale(1.03);
+  transition: transform 0.3s ease;
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.produk-item.visible {
+  opacity: 1;
+  animation: slideDown 0.5s ease-out forwards;
+}
+
+/* Style untuk tombol Tambahkan ke Keranjang */
+.produk-item button {
+  background-color: #1f2937; /* bg-gray-800 */
+  color: #fff; /* Teks putih */
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.25rem;
+  width: 100%; /* Full width */
+  margin-top: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.produk-item button:hover {
+  background-color: #374151; /* bg-gray-700 */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Hover effect for nav links */
+nav ul li a {
+  position: relative;
+}
+
+nav ul li a::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #3b82f6; /* Tailwind's blue-500 */
+  transition: width 0.3s ease;
+}
+
+nav ul li a:hover::after {
+  width: 100%;
+}
+
+/* Mobile menu */
+nav ul {
+  display: none;
+  transition: all 0.3s ease;
+}
+
+nav ul.active {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background-color: #333;
+  padding: 1rem;
+  z-index: 1000;
+}
+
+@media (min-width: 768px) {
+  nav ul {
+    display: flex;
+    flex-direction: row;
+    position: static;
+    background-color: transparent;
+    padding: 0;
+  }
+}
+
+/* Hamburger */
+.hamburger {
+  z-index: 1001;
+  pointer-events: auto;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  padding: 0.5rem;
+}
+
+@media (max-width: 767px) {
+  .hamburger {
+    margin-left: auto;
+    padding-right: 0;
+  }
+}
+
+/* Produk Section */
+#produk {
+  padding-bottom: 2rem; /* Jarak bawah biar footer gak nempel */
+}
+
+/* Hero Images */
+.hero-image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  max-width: 600px; /* Desktop */
+  height: 400px; /* Tinggi tetap */
+  margin: 2rem auto; /* Jarak dari atas */
+  padding: 1rem; /* Jarak dari tepi */
+}
+
+.hero-image0 {
+  position: absolute;
+  width: 80%; /* Background besar */
+  height: 100%; /* Full height */
+  object-fit: cover;
+  z-index: 0; /* Di belakang */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Center */
+  opacity: 0.8; /* Sedikit transparan */
+}
+
+.hero-image1,
+.hero-image2 {
+  position: relative;
+  width: 30%; /* Lebih kecil di depan */
+  height: auto;
+  object-fit: cover;
+  z-index: 10; /* Di depan */
+  margin: 0 1rem; /* Jarak antar orang */
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .hero-image-container {
+    max-width: 500px; /* iPad */
+    height: 350px;
+    flex-direction: row; /* Sejajar */
+    margin: 1.5rem auto;
+    padding: 0.75rem;
+  }
+  .hero-image0 {
+    width: 85%; /* Sedikit lebih besar */
+  }
+  .hero-image1,
+  .hero-image2 {
+    width: 35%; /* Sesuai tablet */
+    margin: 0 0.75rem;
+  }
+  .produk-item {
+    max-width: 250px; /* Ukuran wajar iPad */
+  }
+  .produk-item img {
+    height: 180px; /* Sesuai iPad */
+  }
+}
+
+@media (max-width: 767px) {
+  .hero-image-container {
+    max-width: 300px;
+    height: 400px; /* Tetap tinggi */
+    flex-direction: row; /* Tetap sejajar */
+    align-items: center;
+    margin: 1rem auto;
+    padding: 0.5rem;
+  }
+  .hero-image0 {
+    width: 100%; /* Full-width di HP */
+    height: 100%; /* Full height */
+  }
+  .hero-image1,
+  .hero-image2 {
+    width: 40%; /* Lebih kecil tapi jelas */
+    margin: 0 0.5rem; /* Jarak horizontal */
+  }
+  .produk-item {
+    max-width: 200px; /* Ukuran wajar HP */
+  }
+  .produk-item img {
+    height: 150px; /* Sesuai HP */
+  }
+}

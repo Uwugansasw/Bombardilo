@@ -1,83 +1,87 @@
 import { products } from "./produk.js";
 
 document.addEventListener("DOMContentLoaded", () => {
+  // Hamburger menu toggle
   const hamburger = document.querySelector(".hamburger");
   const navUl = document.querySelector("nav ul");
 
-  if (hamburger && navUl) {
-    hamburger.addEventListener("click", () => {
-      navUl.classList.toggle("active");
-    });
-
-    navUl.querySelectorAll("a").forEach((link) => {
-      link.addEventListener("click", () => {
-        navUl.classList.remove("active");
-      });
-    });
-  } else {
-    console.error("Hamburger or nav ul not found in the DOM");
-  }
-});
-
-function handleScroll() {
-  const produkItems = document.querySelectorAll(".produk-item");
-  produkItems.forEach((item) => {
-    const itemPosition = item.getBoundingClientRect();
-    const screenHeight = window.innerHeight;
-    // Cek apakah elemen ada di viewport
-    if (itemPosition.top < screenHeight * 0.9 && itemPosition.bottom > 0) {
-      if (!item.classList.contains("visible")) {
-        item.classList.add("visible");
-      }
-    } else {
-      // Hapus kelas visible saat keluar viewport
-      if (item.classList.contains("visible")) {
-        item.classList.remove("visible");
-      }
-    }
+  hamburger.addEventListener("click", () => {
+    navUl.classList.toggle("active");
+    hamburger.textContent = navUl.classList.contains("active") ? "✕" : "☰";
   });
-}
 
-// Fungsi untuk render produk
-function renderProducts() {
-  const container = document.querySelector(".produk-container");
-  container.innerHTML = ""; // Kosongkan container
+  // Close menu when clicking nav link
+  navUl.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => {
+      navUl.classList.remove("active");
+      hamburger.textContent = "☰";
+    });
+  });
 
-  products.forEach((product, index) => {
+  // Render products
+  const productContainer = document.querySelector(".produk-container");
+  products.forEach((product) => {
     const productElement = document.createElement("div");
     productElement.classList.add("produk-item");
-    // Set CSS variabel untuk delay
-    productElement.style.setProperty("--produk-counter", index);
-
     productElement.innerHTML = `
-          <img src="${product.image}" alt="${product.alt}" />
-          <h3>${product.name}</h3>
-          <p>${product.price}</p>
-          <button class="produk-tombol">Tambah ke Keranjang</button>
-      `;
-    const button = productElement.querySelector(".produk-tombol");
-    button.addEventListener("click", () => {
-      alert(`Produk ${product.name} ditambahkan ke keranjang!`);
-    });
-    container.appendChild(productElement);
+      <img src="${product.image}" alt="${product.alt}" />
+      <h3>${product.name}</h3>
+      <p>${product.price}</p>
+      <button>Tambahkan ke Keranjang</button>
+    `;
+    productContainer.appendChild(productElement);
   });
-}
 
-// Jalankan render saat halaman dimuat
-document.addEventListener("DOMContentLoaded", () => {
-  renderProducts();
-  handleScroll(); // Inisialisasi awal
-});
+  // IntersectionObserver for slide-down animation
+  const productItems = document.querySelectorAll(".produk-item");
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry, index) => {
+        if (entry.isIntersecting) {
+          // Tambahkan kelas visible dengan delay untuk animasi
+          setTimeout(() => {
+            entry.target.classList.add("visible");
+          }, index * 100); // Delay bertambah 0.1s per produk
+        } else {
+          // Hapus kelas visible saat elemen keluar dari viewport
+          entry.target.classList.remove("visible");
+        }
+      });
+    },
+    {
+      threshold: 0.2, // Animasi jalan saat 20% produk kelihatan
+      rootMargin: "0px 0px -50px 0px", // Margin untuk memicu lebih awal
+    }
+  );
 
-// Update animasi saat scroll
-document.addEventListener("scroll", handleScroll);
+  // Amati setiap item produk
+  productItems.forEach((item) => observer.observe(item));
 
-const lihatProdukButton = document.querySelector("#lihat-produk");
-if (lihatProdukButton) {
-  lihatProdukButton.addEventListener("click", () => {
-    const produkSection = document.querySelector("#produk");
-    if (produkSection) {
-      produkSection.scrollIntoView({ behavior: "smooth", block: "start" });
+  // Cart functionality
+  const cartIcon = document.querySelector(".cart-icon");
+  const cartCount = document.querySelector(".cart-count");
+  let cartItems = 0;
+
+  productContainer.addEventListener("click", (e) => {
+    if (e.target.tagName === "BUTTON") {
+      cartItems++;
+      cartCount.textContent = cartItems;
+      // Gunakan SweetAlert2 untuk alert yang lebih cantik
+      const productName =
+        e.target.parentElement.querySelector("h3").textContent;
+      Swal.fire({
+        title: "Berhasil!",
+        text: `${productName} telah ditambahkan ke keranjang!`,
+        icon: "success",
+        confirmButtonText: "OK",
+        confirmButtonColor: "#1f2937", // Sesuaikan dengan bg-gray-800
+      });
     }
   });
-}
+
+  // Smooth scroll for Lihat Produk button
+  document.querySelector("#lihat-produk").addEventListener("click", (e) => {
+    e.preventDefault();
+    document.querySelector("#produk").scrollIntoView({ behavior: "smooth" });
+  });
+});
