@@ -6,21 +6,21 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
     />
-    <title>Toko Baju Online</title>
+    <title>Toko Baju Fredrik</title>
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
     />
     <link rel="stylesheet" href="dist/tailwind.css" />
     <link rel="stylesheet" href="custom.css" />
-    <!-- Tambahkan CDN SweetAlert2 -->
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css"
     />
-    <script type="module" src="script.js" defer></script>
-    <!-- Tambahkan CDN SweetAlert2 JS -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script type="module" src="script.js" defer></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
   </head>
   <body class="scroll-smooth">
     <header
@@ -35,7 +35,7 @@
         ☰
       </div>
       <nav class="md:flex items-center">
-        <ul class="items-center space-x-6">
+        <ul class="items-center space-x-6 md:space-x-6">
           <li>
             <a href="#home" class="text-gray-200 hover:text-blue-500">Home</a>
           </li>
@@ -50,17 +50,16 @@
             >
           </li>
           <div class="cart-icon flex items-center space-x-2 cursor-pointer">
-            <i class="fas fa-cart-shopping text-white text-lg"></i>
+            <a href="/cart/cart.html">
+              <i class="fas fa-cart-shopping text-white text-lg"></i>
+            </a>
             <span
               class="cart-count bg-blue-500 text-white rounded-full text-xs px-2 py-1"
               >0</span
             >
           </div>
-          <a
-            href="./loginpage/login.html"
-            class="btn-login bg-blue-500 text-white px-4 py-2 rounded-full hover:bg-blue-600"
-          >
-            Sign Up / Sign In
+          <a href="/loginpage/login.html" class="btn-login px-4 py-2">
+            <i class="fa-solid fa-right-to-bracket"></i>
           </a>
         </ul>
       </nav>
@@ -72,6 +71,8 @@
     >
       <div
         class="hero-content text-center md:text-left max-w-full md:max-w-[60%] md:pl-16 mb-6 md:mb-0"
+        data-aos="fade-right"
+        data-aos-duration="1000"
       >
         <h2 class="kata1 text-2xl md:text-3xl font-bold">
           Selamat Datang di Fredrik Store
@@ -86,12 +87,16 @@
         </p>
         <button
           id="lihat-produk"
-          class="mt-6 bg-gray-800 text-white px-6 py-3 rounded hover:bg-gray-700 hover:shadow-lg w-48"
+          class="mt-6 bg-gray-800 text-white px-6 py-3 rounded-lg hover:bg-gray-700 hover:shadow-lg w-48"
         >
           Lihat Produk
         </button>
       </div>
-      <div class="relative w-full md:w-auto flex justify-center">
+      <div
+        class="relative w-full md:w-auto flex justify-center"
+        data-aos="fade-left"
+        data-aos-duration="1000"
+      >
         <div
           class="hero-image-container relative flex justify-center items-center"
         >
@@ -114,14 +119,14 @@
       </div>
     </section>
 
-    <section id="produk" class="text-center py-10">
+    <section id="produk" class="text-center py-10 pt-16">
       <h2 class="produk-h2 text-3xl md:text-4xl font-bold">Produk Kami</h2>
       <div
-        class="produk-container flex flex-wrap justify-center gap-6 mt-10 mb-4"
+        class="produk-container flex flex-wrap justify-center gap-6 mt-10 pb-20"
       ></div>
     </section>
 
-    <footer id="kontak" class="bg-gray-800 text-white text-center py-4 mt-8">
+    <footer id="kontak" class="bg-gray-800 text-white text-center py-4 mt-16">
       <h2 class="text-2xl font-bold">Kontak Kami</h2>
       <p class="mt-2">Email: fredriktkt12@gmail.com | Telp: 0822-1037-4842</p>
     </footer>

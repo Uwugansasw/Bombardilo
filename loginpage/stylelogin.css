@@ -1,0 +1,146 @@
+/* Pastikan centering box login */
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  background: white;
+  background-attachment: fixed;
+}
+
+/* Styling box login */
+.bg-white {
+  background: linear-gradient(145deg, #ffffff, #f0f0f0);
+  border: 4px solid #e5e7eb; /* border-gray-200 */
+  border-radius: 0.5rem !important; /* rounded-lg */
+  animation: fadeIn 0.8s ease-out;
+  max-width: 28rem; /* max-w-md */
+  width: 100%;
+  margin: auto;
+}
+
+/* Styling untuk indikator persyaratan password */
+.check-icon {
+  display: inline-flex;
+  width: 18px;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+/* Animasi untuk error pada email/phone */
+#email-phone-error {
+  transition: all 0.3s ease;
+}
+
+#email-phone-error:not(.hidden) {
+  animation: shake 0.5s;
+}
+
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  10%,
+  30%,
+  50%,
+  70%,
+  90% {
+    transform: translateX(-5px);
+  }
+  20%,
+  40%,
+  60%,
+  80% {
+    transform: translateX(5px);
+  }
+}
+
+/* Styling untuk tombol login disabled */
+.login-btn.opacity-50 {
+  background-color: #6b7280 !important;
+}
+
+/* Transisi yang lebih halus untuk semua elemen input */
+input,
+button {
+  transition: all 0.2s ease-in-out;
+}
+
+input:focus {
+  transform: scale(1.01);
+}
+
+/* Animasi masuk untuk box */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Efek hover pada input */
+input:focus {
+  border-color: #06b6d4; /* cyan-500 */
+  box-shadow: 0 2px 4px rgba(6, 182, 212, 0.2);
+}
+
+/* Styling tombol toggle password */
+#toggle-password {
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+#toggle-password:hover {
+  transform: scale(1.1);
+}
+
+/* Styling tombol login */
+.login-btn {
+  position: relative;
+  overflow: hidden;
+  background-color: #000000 !important; /* Fallback untuk bg-black */
+  border-radius: 0.5rem !important; /* rounded-lg */
+}
+
+/* Animasi kilau pada tombol */
+.login-btn::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  transition: left 0.5s;
+}
+
+.login-btn:hover::after {
+  left: 100%;
+}
+
+/* Styling ketika tombol login disabled */
+.login-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Efek pada teks Daftar dan Kembali */
+.text-cyan-500 {
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.text-cyan-500:hover {
+  transform: translateX(2px);
+}

@@ -151,18 +151,63 @@ nav ul {
   transition: all 0.3s ease;
 }
 
-nav ul.active {
-  display: flex;
-  flex-direction: column;
-  position: absolute;
-  top: 100%;
-  left: 0;
-  width: 100%;
-  background-color: #333;
-  padding: 1rem;
-  z-index: 1000;
+/* Override Tailwind's space-x-6 class for mobile */
+@media (max-width: 767px) {
+  /* Reset Tailwind's space-x utility completely */
+  nav ul.space-x-6 > :not([hidden]) ~ :not([hidden]) {
+    --tw-space-x-reverse: 0;
+    margin-right: calc(0px * var(--tw-space-x-reverse));
+    margin-left: calc(0px * calc(1 - var(--tw-space-x-reverse)));
+  }
+
+  /* Mobile menu styles */
+  nav ul.active {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: #1f2937;
+    padding: 1rem 0;
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+  }
+
+  nav ul.active li {
+    width: 100%;
+    padding: 0;
+    margin: 0.5rem 0;
+    display: flex;
+    justify-content: center;
+  }
+
+  nav ul.active li a {
+    width: auto;
+    display: block;
+    text-align: center;
+    padding: 0.5rem 0;
+  }
+
+  /* Cart icon container */
+  nav ul.active .cart-icon {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 0.5rem 0;
+  }
+
+  /* Login/Logout button */
+  nav ul.active .btn-login {
+    width: auto;
+    margin: 0.5rem auto;
+    display: inline-block;
+    text-align: center;
+  }
 }
 
+/* Desktop menu */
 @media (min-width: 768px) {
   nav ul {
     display: flex;
@@ -277,4 +322,17 @@ nav ul.active {
   .produk-item img {
     height: 150px; /* Sesuai HP */
   }
+}
+
+.btn-logout {
+  background-color: #ef4444;
+  color: white !important;
+  border-radius: 0.375rem;
+  transition: all 0.3s ease;
+}
+
+.btn-logout:hover {
+  background-color: #dc2626;
+  color: white !important;
+  text-decoration: none;
 }

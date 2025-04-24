@@ -1,0 +1,164 @@
+/* Pastikan centering box sign up */
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  background: white;
+  background-attachment: fixed;
+}
+
+/* Styling box sign up */
+.bg-white {
+  background: linear-gradient(145deg, #ffffff, #f0f0f0);
+  border: 4px solid #e5e7eb; /* border-gray-200 */
+  border-radius: 0.5rem !important; /* rounded-lg */
+  animation: fadeIn 0.8s ease-out;
+  max-width: 28rem; /* max-w-md */
+  width: 100%;
+  margin: auto;
+}
+
+/* Styling untuk indikator persyaratan password */
+.check-icon {
+  display: inline-flex;
+  width: 18px;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+/* Animasi untuk error */
+.text-red-500:not(.hidden) {
+  animation: shake 0.5s;
+}
+
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  10%,
+  30%,
+  50%,
+  70%,
+  90% {
+    transform: translateX(-5px);
+  }
+  20%,
+  40%,
+  60%,
+  80% {
+    transform: translateX(5px);
+  }
+}
+
+/* Styling untuk tombol signup disabled */
+.login-btn.opacity-50 {
+  background-color: #6b7280 !important;
+}
+
+/* Transisi yang lebih halus untuk semua elemen input */
+input,
+button,
+select {
+  transition: all 0.2s ease-in-out;
+}
+
+input:focus,
+select:focus {
+  transform: scale(1.01);
+}
+
+/* Animasi masuk untuk box */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Efek hover pada input */
+input:focus,
+select:focus {
+  border-color: #06b6d4; /* cyan-500 */
+  box-shadow: 0 2px 4px rgba(6, 182, 212, 0.2);
+}
+
+/* Styling tombol toggle password */
+.toggle-password {
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.toggle-password:hover {
+  transform: scale(1.1);
+}
+
+/* Styling tombol daftar */
+.login-btn {
+  position: relative;
+  overflow: hidden;
+  background-color: #000000 !important; /* Fallback untuk bg-black */
+  border-radius: 0.5rem !important; /* rounded-lg */
+}
+
+/* Animasi kilau pada tombol */
+.login-btn::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  transition: left 0.5s;
+}
+
+.login-btn:hover::after {
+  left: 100%;
+}
+
+/* Styling ketika tombol daftar disabled */
+.login-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Efek pada teks Login dan Kembali */
+.text-cyan-500 {
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.text-cyan-500:hover {
+  transform: translateX(2px);
+}
+
+/* Styling khusus untuk select dropdown */
+select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%236b7280' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.5rem center;
+  background-size: 1em;
+  padding-right: 2rem;
+}
+
+/* Media query untuk responsif pada layar kecil */
+@media (max-width: 640px) {
+  .bg-white {
+    max-width: 90%;
+    margin: 0 auto;
+    padding: 1.5rem;
+  }
+}

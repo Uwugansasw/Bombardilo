@@ -20,32 +20,7 @@ export const products = [
   {
     name: "Baju Sporty",
     price: "Rp 160.000",
-    image: "/Gambar/baju_sporty.jpg",
+    image: "/Gambar/baju sporty.jpg",
     alt: "Baju 4",
   },
-  {
-    name: "Baju Sporty",
-    price: "Rp 160.000",
-    image: "/Gambar/baju_sporty.jpg",
-    alt: "Baju 4",
-  },
-  {
-    name: "Baju Sporty",
-    price: "Rp 160.000",
-    image: "/Gambar/baju_sporty.jpg",
-    alt: "Baju 4",
-  },
-  {
-    name: "Baju Sporty",
-    price: "Rp 160.000",
-    image: "/Gambar/baju_sporty.jpg",
-    alt: "Baju 4",
-  },
-  {
-    name: "Baju Sporty",
-    price: "Rp 160.000",
-    image: "/Gambar/baju_sporty.jpg",
-    alt: "Baju 4",
-  },
-  // Tambah produk baru di sini
 ];

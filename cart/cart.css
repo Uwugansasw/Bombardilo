@@ -1,0 +1,646 @@
+/* Reset default margin dan padding, gunakan box-sizing border-box */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+/* Styling body dengan latar abu-abu muda */
+body {
+  background-color: #f5f5f5;
+  min-height: 100vh;
+}
+
+/* Header dengan posisi tetap di atas */
+nav ul li a {
+  position: relative;
+}
+
+nav ul li a::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #3b82f6; /* Tailwind's blue-500 */
+  transition: width 0.3s ease;
+}
+
+nav ul li a:hover::after {
+  width: 100%;
+}
+
+/* Mobile menu */
+nav ul {
+  display: none;
+  transition: all 0.3s ease;
+}
+
+/* Logo dengan ukuran teks besar */
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+@media (max-width: 767px) {
+  /* Reset Tailwind's space-x utility completely */
+  nav ul.space-x-6 > :not([hidden]) ~ :not([hidden]) {
+    --tw-space-x-reverse: 0;
+    margin-right: calc(0px * var(--tw-space-x-reverse));
+    margin-left: calc(0px * calc(1 - var(--tw-space-x-reverse)));
+  }
+
+  /* Mobile menu styles */
+  nav ul.active {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: #1f2937;
+    padding: 1rem 0;
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+  }
+
+  nav ul.active li {
+    width: 100%;
+    padding: 0;
+    margin: 0.5rem 0;
+    display: flex;
+    justify-content: center;
+  }
+
+  nav ul.active li a {
+    width: auto;
+    display: block;
+    text-align: center;
+    padding: 0.5rem 0;
+  }
+
+  /* Ikon hamburger untuk menu mobile */
+  .hamburger {
+    font-size: 1.5rem;
+    cursor: pointer;
+    display: block;
+  }
+
+  /* Cart icon container */
+  nav ul.active .cart-icon {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 0.5rem 0;
+  }
+
+  /* Login/Logout button */
+  nav ul.active .btn-login {
+    width: auto;
+    margin: 0.5rem auto;
+    display: inline-block;
+    text-align: center;
+  }
+}
+/* Kontainer navigasi untuk dropdown */
+.nav-container {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background-color: #1f2937;
+  z-index: 1000;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Tampilkan navigasi saat kelas open ditambahkan */
+.nav-container.open {
+  display: block;
+}
+
+/* Menu navigasi dengan tata letak kolom untuk mobile */
+.nav-menu {
+  flex-direction: column;
+  padding: 1rem;
+}
+
+/* Daftar menu navigasi */
+.nav-menu ul {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  gap: 1rem;
+}
+
+/* Item daftar menu */
+.nav-menu ul li {
+  width: 100%;
+  position: relative;
+}
+
+/* Link navigasi */
+.nav-menu a {
+  color: #e5e7eb;
+  text-decoration: none;
+  transition: color 0.3s;
+  display: block;
+  padding: 0.5rem 0;
+  position: relative;
+}
+
+/* Efek hover pada link */
+.nav-menu a:hover {
+  color: #3b82f6;
+}
+
+/* Garis biru untuk link navigasi (kecuali Keranjang dan Login) */
+.nav-menu ul li a:not(.cart-icon a, .btn-login)::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 3px;
+  background-color: #3b82f6; /* Tailwind's blue-500 */
+  transition: width 0.3s ease;
+}
+
+/* Animasi garis biru saat hover */
+.nav-menu ul li a:not(.cart-icon a, .btn-login):hover::after {
+  width: 100%;
+}
+
+/* Ikon keranjang dengan tata letak flex */
+.cart-icon {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+
+/* Jumlah item di keranjang */
+.cart-count {
+  background-color: #3b82f6;
+  color: white;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  padding: 0.25rem 0.5rem;
+}
+
+/* Tombol login */
+.btn-login {
+  padding: 0.5rem 1rem;
+  background-color: transparent;
+  border: none;
+  color: white;
+  cursor: pointer;
+  display: inline-block;
+}
+
+/* Styling untuk layar lebih besar dari 768px (desktop) */
+@media (min-width: 768px) {
+  nav ul {
+    display: flex;
+    flex-direction: row;
+    position: static;
+    background-color: transparent;
+    padding: 0;
+  }
+}
+
+.hamburger {
+  z-index: 1001;
+  pointer-events: auto;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  padding: 0.5rem;
+}
+
+/* Kontainer utama untuk konten */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 6rem 1rem 2rem;
+}
+
+/* Judul keranjang */
+.cart-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+}
+
+/* Kontainer keranjang */
+.cart-container {
+  background-color: white;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+/* Bagian keranjang */
+.cart-section {
+  padding: 0;
+}
+
+/* Header keranjang */
+.cart-header {
+  display: flex;
+  padding: 1rem; /* Diperbaiki dari padding\"1rem */
+  background-color: #f9fafb;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+/* Pilih semua item */
+.select-all {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Kotak centang */
+.checkbox {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+/* Item keranjang */
+.cart-item {
+  display: flex;
+  padding: 1rem;
+  border-bottom: 1px solid #e5e7eb;
+  align-items: flex-start;
+}
+
+/* Baris supplier */
+.supplier-row {
+  display: flex;
+  padding: 1rem;
+  border-bottom: 1px solid #e5e7eb;
+  background-color: #f9fafb;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Gambar produk */
+.product-image {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  margin: 0 1rem;
+  border: 1px solid #e5e7eb;
+}
+
+/* Informasi produk */
+.product-info {
+  flex: 1;
+}
+
+/* Judul produk */
+.product-title {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+/* Meta produk */
+.product-meta {
+  font-size: 0.875rem;
+  color: #6b7280;
+  margin-bottom: 0.5rem;
+}
+
+.product-meta i {
+  color: #ef4444;
+  margin-right: 0.25rem;
+}
+
+/* Jaminan uang kembali */
+.money-back {
+  color: #047857;
+  font-size: 0.875rem;
+  margin-bottom: 0.25rem;
+}
+
+.money-back i {
+  margin-right: 0.25rem;
+}
+
+/* Informasi pengiriman */
+.delivery-info {
+  color: #6b7280;
+  font-size: 0.875rem;
+  margin-bottom: 0.25rem;
+}
+
+.delivery-info i {
+  margin-right: 0.25rem;
+}
+
+/* Pesanan minimum */
+.min-order {
+  color: #6b7280;
+  font-size: 0.875rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Pemilih warna */
+.color-selector {
+  display: flex;
+  align-items: center;
+  margin: 0.75rem 0;
+  gap: 0.5rem;
+}
+
+/* Pratinjau warna */
+.color-preview {
+  width: 40px;
+  height: 40px;
+  border-radius: 0.25rem;
+  overflow: hidden;
+  border: 1px solid #e5e7eb;
+}
+
+/* Harga per buah */
+.price-per-piece {
+  font-size: 0.875rem;
+  color: #4b5563;
+}
+
+/* Pemilih jumlah */
+.quantity-selector {
+  display: flex;
+  align-items: center;
+  margin-top: 0.75rem;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+/* Tombol jumlah */
+.qty-btn {
+  width: 32px;
+  height: 32px;
+  border: 1px solid #e5e7eb;
+  background-color: #f9fafb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  cursor: pointer;
+  user-select: none;
+  border-radius: 50%;
+}
+
+/* Input jumlah */
+.qty-input {
+  width: 50px;
+  height: 32px;
+  border: 1px solid #e5e7eb;
+  text-align: center;
+}
+
+/* Batas jumlah */
+.qty-limit {
+  font-size: 0.75rem;
+  color: #ef4444;
+  margin-top: 0.5rem;
+  width: 100%;
+}
+
+/* Tombol hapus */
+.delete-btn {
+  color: #6b7280;
+  cursor: pointer;
+  margin-left: 1rem;
+  font-size: 1.125rem;
+}
+
+.delete-btn:hover {
+  color: #ef4444;
+}
+
+/* Harga item */
+.item-price {
+  font-weight: bold;
+  font-size: 1.125rem;
+  margin-left: 1rem;
+  min-width: 80px;
+  text-align: right;
+}
+
+/* Tata letak keranjang - ALIBABA STYLE */
+.cart-layout {
+  display: flex;
+  gap: 1.5rem;
+}
+
+/* Bagian utama keranjang */
+.cart-main {
+  flex: 1;
+}
+
+/* Sidebar keranjang */
+.cart-sidebar {
+  width: 300px;
+}
+
+/* Ringkasan keranjang */
+.cart-summary {
+  background-color: white;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+}
+
+/* Judul ringkasan */
+.summary-title {
+  font-size: 1.125rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+/* Baris ringkasan */
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+}
+
+/* Label ringkasan */
+.summary-label {
+  color: #4b5563;
+}
+
+/* Nilai ringkasan */
+.summary-value {
+  font-weight: 500;
+}
+
+/* Diskon */
+.discount {
+  color: #ef4444;
+}
+
+/* Total ringkasan */
+.summary-total {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid #e5e7eb;
+  font-weight: bold;
+}
+
+/* Tombol checkout - ALIBABA STYLE */
+.checkout-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 0.875rem;
+  background-color: #333;
+  color: white;
+  border: none;
+  border-radius: 0.25rem;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 1rem;
+  transition: background-color 0.3s;
+}
+
+.checkout-btn i {
+  margin-right: 0.5rem;
+}
+
+.checkout-btn:hover {
+  background-color: #0c0c0c;
+}
+
+/* Pembayaran aman - ALIBABA STYLE */
+.secure-payment {
+  margin-top: 1.5rem;
+}
+
+/* Judul pembayaran aman */
+.secure-title {
+  font-weight: bold;
+  margin-bottom: 0.75rem;
+}
+
+/* Metode pembayaran */
+.payment-methods {
+  display: flex;
+  gap: 0.5rem;
+  margin: 0.5rem 0;
+}
+
+/* Ikon pembayaran */
+.payment-icon {
+  height: 24px;
+}
+
+/* Fitur keamanan */
+.secure-feature {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+  color: #4b5563;
+  font-size: 0.875rem;
+}
+
+.secure-feature i {
+  color: #047857;
+}
+
+/* ALIBABA SPECIFIC STYLES */
+.cart-item-checkbox {
+  display: flex;
+  align-items: flex-start;
+  margin-top: 1rem;
+}
+
+.supplier-name {
+  font-weight: 500;
+}
+
+.supplier-badge {
+  display: inline-block;
+  background-color: #f8f9fa;
+  border: 1px solid #e5e7eb;
+  border-radius: 4px;
+  padding: 0 6px;
+  font-size: 0.75rem;
+  margin-left: 0.5rem;
+}
+
+.fire-icon {
+  color: #ff6a00;
+}
+
+.product-status {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.5rem;
+}
+
+.product-status-item {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.75rem;
+}
+
+.guarantee-badge {
+  color: #047857;
+}
+
+/* Responsive styles specifically for Alibaba layout */
+@media (max-width: 768px) {
+  .cart-layout {
+    flex-direction: column;
+  }
+
+  .cart-sidebar {
+    width: 100%;
+    margin-top: 1rem;
+  }
+
+  .cart-item {
+    flex-wrap: wrap;
+  }
+
+  .item-price {
+    margin-top: 1rem;
+    width: 100%;
+    text-align: left;
+  }
+
+  .qty-limit {
+    width: 100%;
+  }
+}
+
+/* Animasi untuk perubahan jumlah */
+@keyframes highlight {
+  0% {
+    background-color: #fff;
+  }
+  50% {
+    background-color: #f0f9ff;
+  }
+  100% {
+    background-color: #fff;
+  }
+}
+
+.highlight {
+  animation: highlight 1s ease;
+}

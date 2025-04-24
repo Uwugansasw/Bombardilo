@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <title>Keranjang - Toko Baju Fredrik</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="../header.css" />
+    <link rel="stylesheet" href="cart.css" />
+    <link rel="stylesheet" href="../dist/tailwind.css" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="cart.js" defer></script>
+  </head>
+  <body>
+    <header
+      class="bg-gray-800 text-white py-4 px-4 fixed w-full z-50 top-0 flex justify-between items-center"
+    >
+      <h1 class="text-xl md:text-2xl">FS</h1>
+      <div
+        class="hamburger md:hidden text-2xl cursor-pointer select-none ml-auto"
+        role="button"
+        aria-label="Toggle menu"
+      >
+        ☰
+      </div>
+      <nav class="md:flex items-center">
+        <ul class="items-center space-x-6 md:space-x-6">
+          <li>
+            <a
+              href="../index.html/#home"
+              class="text-gray-200 hover:text-blue-500"
+              >Home</a
+            >
+          </li>
+          <li>
+            <a
+              href="../index.html/#produk"
+              class="text-gray-200 hover:text-blue-500"
+              >Produk</a
+            >
+          </li>
+          <li>
+            <a
+              href="../index.html/#kontak"
+              class="text-gray-200 hover:text-blue-500"
+              >Kontak</a
+            >
+          </li>
+          <div class="cart-icon flex items-center space-x-2 cursor-pointer">
+            <a href="./cart/cart.html">
+              <i class="fas fa-cart-shopping text-white text-lg"></i>
+            </a>
+            <span
+              class="cart-count bg-blue-500 text-white rounded-full text-xs px-2 py-1"
+              >0</span
+            >
+          </div>
+          <a href="./loginpage/login.html" class="btn-login px-4 py-2">
+            <i class="fa-solid fa-right-to-bracket"></i>
+          </a>
+        </ul>
+      </nav>
+    </header>
+
+    <div class="container">
+      <h1 class="cart-title">Keranjang Belanja</h1>
+
+      <div class="cart-layout">
+        <div class="cart-main">
+          <div class="cart-container">
+            <div class="cart-header">
+              <div class="select-all">
+                <input
+                  type="checkbox"
+                  class="checkbox"
+                  id="select-all"
+                  checked
+                />
+                <label for="select-all">Pilih semua variasi (1)</label>
+              </div>
+            </div>
+
+            <div class="cart-section">
+              <!-- Konten cart-section akan dirender oleh JavaScript -->
+            </div>
+          </div>
+        </div>
+
+        <div class="cart-sidebar">
+          <div class="cart-summary">
+            <h3 class="summary-title">Ringkasan pesanan (1 variasi)</h3>
+
+            <div class="summary-row">
+              <div class="summary-label">Subtotal barang</div>
+              <div class="summary-value" data-testid="subtotal-value">Rp 0</div>
+            </div>
+
+            <div class="summary-row">
+              <div class="summary-label">Biaya pengiriman</div>
+              <div class="summary-value">Rp 0</div>
+            </div>
+
+            <div class="summary-total">
+              <div>Subtotal (belum termasuk pajak)</div>
+              <div>Rp 0</div>
+            </div>
+
+            <button class="checkout-btn">
+              <i class="fas fa-shield-alt"></i>
+              Pesan Sekarang
+            </button>
+
+            <div class="secure-payment">
+              <div class="secure-title">
+                Anda dilindungi di Toko Baju Fredrik
+              </div>
+
+              <div class="secure-feature">
+                <i class="fas fa-lock"></i>
+                Pembayaran aman
+                <div class="payment-methods">
+                  <img
+                    src="/api/placeholder/24/16"
+                    alt="Visa"
+                    class="payment-icon"
+                  />
+                  <img
+                    src="/api/placeholder/24/16"
+                    alt="MasterCard"
+                    class="payment-icon"
+                  />
+                  <img
+                    src="/api/placeholder/24/16"
+                    alt="PayPal"
+                    class="payment-icon"
+                  />
+                </div>
+              </div>
+
+              <div class="secure-feature">
+                <i class="fas fa-undo"></i>
+                Pengembalian dan retur
+              </div>
+
+              <div class="secure-feature">
+                <i class="fas fa-shipping-fast"></i>
+                Pengiriman oleh Logistik FS
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      (function () {
+        function c() {
+          var b = a.contentDocument || a.contentWindow.document;
+          if (b) {
+            var d = b.createElement("script");
+            d.innerHTML =
+              "window.__CF$cv$params={r:'932c3b3e98bb678c',t:'MTc0NTA2MzkyMC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";
+            b.getElementsByTagName("head")[0].appendChild(d);
+          }
+        }
+        if (document.body) {
+          var a = document.createElement("iframe");
+          a.height = 1;
+          a.width = 1;
+          a.style.position = "absolute";
+          a.style.top = 0;
+          a.style.left = 0;
+          a.style.border = "none";
+          a.style.visibility = "hidden";
+          document.body.appendChild(a);
+          if ("loading" !== document.readyState) c();
+          else if (window.addEventListener)
+            document.addEventListener("DOMContentLoaded", c);
+          else {
+            var e = document.onreadystatechange || function () {};
+            document.onreadystatechange = function (b) {
+              e(b);
+              "loading" !== document.readyState &&
+                ((document.onreadystatechange = e), c());
+            };
+          }
+        }
+      })();
+    </script>
+    <script>
+      (function () {
+        function c() {
+          var b = a.contentDocument || a.contentWindow.document;
+          if (b) {
+            var d = b.createElement("script");
+            d.innerHTML =
+              "window.__CF$cv$params={r:'933bf116deafbfde',t:'MTc0NTIyODY1NS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";
+            b.getElementsByTagName("head")[0].appendChild(d);
+          }
+        }
+        if (document.body) {
+          var a = document.createElement("iframe");
+          a.height = 1;
+          a.width = 1;
+          a.style.position = "absolute";
+          a.style.top = 0;
+          a.style.left = 0;
+          a.style.border = "none";
+          a.style.visibility = "hidden";
+          document.body.appendChild(a);
+          if ("loading" !== document.readyState) c();
+          else if (window.addEventListener)
+            document.addEventListener("DOMContentLoaded", c);
+          else {
+            var e = document.onreadystatechange || function () {};
+            document.onreadystatechange = function (b) {
+              e(b);
+              "loading" !== document.readyState &&
+                ((document.onreadystatechange = e), c());
+            };
+          }
+        }
+      })();
+    </script>
+  </body>
+</html>
